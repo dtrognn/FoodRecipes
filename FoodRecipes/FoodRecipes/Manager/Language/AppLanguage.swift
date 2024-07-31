@@ -28,9 +28,9 @@ class AppLanguage {
     }
 }
 
-//func language(_ keyLanguage: String) -> String {
-//    return NSLocalizedString(keyLanguage, bundle: AppDataManager.shared.appLanguage.bundleLanguage, comment: "")
-//}
+func language(_ keyLanguage: String) -> String {
+    return NSLocalizedString(keyLanguage, bundle: AppDataManager.shared.appLanguage.bundleLanguage, comment: "")
+}
 
 func language(_ keyLanguage: String) -> LocalizedStringKey {
     return LocalizedStringKey(keyLanguage)

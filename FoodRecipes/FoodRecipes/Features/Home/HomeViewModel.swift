@@ -20,14 +20,17 @@ class HomeViewModel: BaseStore {
     }
 
     private func apiGetListMealCategories() {
+        showLoading(true)
         let params = GetListMealCategories.Request()
         GetListMealCategories.service.request(parameters: params)
             .sink { [weak self] error in
                 guard let self = self else { return }
+                self.showLoading(false)
                 self.handleError(error)
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
 
+                self.showLoading(false)
                 response.categories.forEach { category in
                     print("AAA id: \(category.id) - name: \(category.name)")
                 }
