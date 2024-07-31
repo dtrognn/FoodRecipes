@@ -6,5 +6,6 @@ target 'FoodRecipes' do
   # Pods for FoodRecipes
 
   pod 'FRCommon', :path => 'DevPods/FRCommon'
+  pod 'FRCore', :path => 'DevPods/FRCore'
 
 end
