@@ -54,7 +54,6 @@ final class API {
                 default:
                     return .invalidResponse
                 }
-            }
-            .eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
 }

@@ -20,7 +20,7 @@ public protocol Endpoint {
 
 public extension Endpoint {
     var baseURL: String {
-        return "www.themealdb.com"
+        return "https://www.themealdb.com"
     }
 
     func request(parameters: Request) -> AnyPublisher<Response, APIError> {

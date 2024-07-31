@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var router: Router
+    @StateObject private var vm = HomeViewModel()
 
     private var screenConfiguration: ScreenConfiguration {
         .init(title: "", showBackButton: false, hidesBottomBarWhenPushed: false, showNaviBar: false)
