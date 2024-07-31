@@ -5,17 +5,22 @@
 //  Created by dtrognn on 31/7/24.
 //
 
+import FRCommon
 import SwiftUI
 
 struct ContentView: View {
+    var screenConfiguration: ScreenConfiguration {
+        .init(title: "Home",
+              showBackButton: true,
+              showNaviBar: true)
+    }
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ScreenContainerView(screenConfiguration) {
+            VStack {
+                //
+            }
         }
-        .padding()
     }
 }
 
