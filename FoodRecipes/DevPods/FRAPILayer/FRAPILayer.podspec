@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.author           = { 'dtrognn' => 'dtrognn@gmail.com' }
   s.source           = { :git => 'https://github.com/dtrognn/FRAPILayer.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '16.0'
 
   s.source_files = 'FRAPILayer/**/*.{swift,h,m}'
 
