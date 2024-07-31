@@ -19,5 +19,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '16.0'
 
   s.source_files = 'FRCommon/**/*.{swift,h,m}'
+  s.resources = 'FRCommon/**/*.{png,xcassets,json,ttf,txt,storyboard,xib,xcdatamodeld,strings}'
+
+  s.dependency 'SDWebImageSwiftUI'
 
 end

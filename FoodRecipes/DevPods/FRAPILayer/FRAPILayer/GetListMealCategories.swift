@@ -22,7 +22,7 @@ public struct GetListMealCategories: Endpoint {
     }
 
     public struct Response: Codable {
-        public let categories: [Category]
+        public let categories: [Category]?
     }
 
     public struct Category: Codable {
