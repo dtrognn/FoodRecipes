@@ -7,5 +7,6 @@ target 'FoodRecipes' do
 
   pod 'FRCommon', :path => 'DevPods/FRCommon'
   pod 'FRCore', :path => 'DevPods/FRCore'
+  pod 'FRAPILayer', :path => 'DevPods/FRAPILayer'
 
 end
