@@ -34,9 +34,9 @@ private class TabbarRouter: ObservableObject {
         func tabItemData() -> TabItemData {
             switch self {
             case .home:
-                return TabItemData(title: language("Tabbar_A_01"), normalImage: Image("ic_tabbar_home_2", bundle: .main), slectedImage: Image("ic_tabbar_home"))
+                return TabItemData(title: language("Tabbar_A_01"), normalImage: Image.image("ic_tabbar_home_2"), slectedImage: Image("ic_tabbar_home_2"))
             case .profile:
-                return TabItemData(title: language("Tabbar_A_02"), normalImage: Image("ic_tabbar_profile"), slectedImage: Image("ic_tabbar_profile"))
+                return TabItemData(title: language("Tabbar_A_02"), normalImage: Image.image("ic_tabbar_profile"), slectedImage: Image("ic_tabbar_profile"))
             }
         }
     }
@@ -74,4 +74,10 @@ private struct TabItemData {
     var title: LocalizedStringKey
     var normalImage: Image
     var slectedImage: Image
+}
+
+extension Image {
+    static func image(_ name: String) -> Image {
+        return Image(name, bundle: .main)
+    }
 }
