@@ -48,7 +48,7 @@ private extension NaviBarView {
                 self.router.popView()
             }
         } label: {
-            Image.image("ic_arrow_back_2")
+            Image.image("ic_arrow_back")
                 .resizable()
                 .applyTheme(AppStyle.theme.naviBackIconColor)
                 .frame(width: 22, height: 22)
