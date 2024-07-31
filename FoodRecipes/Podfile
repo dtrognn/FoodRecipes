@@ -1,0 +1,10 @@
+platform :ios, '16.0'
+
+target 'FoodRecipes' do
+  use_frameworks!
+
+  # Pods for FoodRecipes
+
+  pod 'FRCommon', :path => 'DevPods/FRCommon'
+
+end
