@@ -14,6 +14,6 @@ final class AppConfigurationManager {
     private init() {}
 
     func loadModuleConfig() {
-        
+        FRCommonConfig.shared.loadConfig()
     }
 }
