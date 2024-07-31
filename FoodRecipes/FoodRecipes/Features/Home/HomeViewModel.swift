@@ -10,6 +10,8 @@ import Foundation
 import FRAPILayer
 
 class HomeViewModel: BaseStore {
+    @Published var categories: [CategoryItemViewData] = []
+
     override init() {
         super.init()
         loadData()
@@ -29,11 +31,18 @@ class HomeViewModel: BaseStore {
                 self.handleError(error)
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
-
                 self.showLoading(false)
-                response.categories.forEach { category in
-                    print("AAA id: \(category.id) - name: \(category.name)")
-                }
+
+                guard let categories = response.categories else { return }
+                self.categories = categories.map { CategoryItemViewData($0) }
             }.store(in: &cancellableSet)
+    }
+}
+
+private extension CategoryItemViewData {
+    init(_ data: GetListMealCategories.Category) {
+        self.name = data.name
+        self.thumb = data.thumb
+        self.description = data.description
     }
 }
