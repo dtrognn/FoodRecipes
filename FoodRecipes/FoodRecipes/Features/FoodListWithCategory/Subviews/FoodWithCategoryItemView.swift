@@ -26,7 +26,7 @@ struct FoodWithCategoryItemView: View {
                 VStack(spacing: AppStyle.layout.zero) {
                     foodThumbView
                     foodNameText
-                }
+                }.overlay(favoriteButton, alignment: .topTrailing)
             }.background(AppStyle.theme.rowCommonBackgroundColor)
                 .cornerRadius(AppStyle.layout.standardSpace)
                 .applyShadowView()
@@ -55,5 +55,17 @@ private extension FoodWithCategoryItemView {
             .padding(.vertical, AppStyle.layout.smallSpace)
             .padding(.horizontal, AppStyle.layout.standardSpace)
             .frame(maxHeight: 50)
+    }
+
+    var favoriteButton: some View {
+        return Button {
+            food.isFavourite.toggle()
+        } label: {
+            Image(systemName: food.isFavourite ? "heart.fill" : "heart")
+                .applyTheme(food.isFavourite ? .red : .white)
+                .animation(.easeInOut(duration: 0.3), value: food.isFavourite)
+                .scaleEffect(1.2)
+        }.padding(.all, AppStyle.layout.mediumSpace)
+            .background(AppStyle.theme.iconOffColor)
     }
 }
