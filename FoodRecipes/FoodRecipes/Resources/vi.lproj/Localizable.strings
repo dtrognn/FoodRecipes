@@ -3,5 +3,10 @@
 
 "Common_A_01" = "Thông báo";
 
+"Error_A_01" = "Có lỗi xảy ra, vui lòng thử lại!";
+
 "Home_A_01" = "Danh mục";
 "Home_A_02" = "Xin chào, %@!";
+
+"Food_List_A_01" = "Danh sách món ăn ";
+"Food_List_A_02" = "Chưa có món ăn trong danh mục %@";

@@ -30,8 +30,8 @@ open class BaseViewModel: ObservableObject {
         switch error {
         case .finished:
             break
-        case .failure(let error):
-            print("AAA error: \(error.localizedDescription)")
+        case .failure:
+            showErrorMessage(language("Error_A_01"))
         }
     }
 

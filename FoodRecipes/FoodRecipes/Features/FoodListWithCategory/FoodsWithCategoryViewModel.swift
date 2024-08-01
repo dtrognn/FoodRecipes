@@ -11,6 +11,8 @@ import FRAPILayer
 class FoodsWithCategoryViewModel: BaseViewModel {
     private var category: CategoryItemViewData
 
+    @Published var foods: [FoodItemViewData] = []
+
     init(_ category: CategoryItemViewData) {
         self.category = category
         super.init()
@@ -19,8 +21,6 @@ class FoodsWithCategoryViewModel: BaseViewModel {
 
     private func apiFilterByCategory() {
         showLoading(true)
-//        FilterByCategoryEndpoint.service(category).request(parameters: .init())
-
         let params = FilterByCategoryEndpoint.Request(category.name)
         FilterByCategoryEndpoint.service.request(parameters: params)
             .sink { [weak self] error in
@@ -32,10 +32,16 @@ class FoodsWithCategoryViewModel: BaseViewModel {
                 self.showLoading(false)
 
                 guard let meals = response.meals else { return }
-
-                meals.forEach {
-                    print("AAA name: \($0.name)")
-                }
+                self.foods = meals.map { FoodItemViewData($0) }
             }.store(in: &cancellableSet)
+    }
+}
+
+private extension FoodItemViewData {
+    convenience init(_ data: FilterByCategoryEndpoint.Meal) {
+        self.init()
+        self.id = data.id
+        self.name = data.name
+        self.thumb = data.thumb
     }
 }
