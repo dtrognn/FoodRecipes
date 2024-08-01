@@ -24,6 +24,7 @@ final class API {
             return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
         }
 
+        printMessage("url: \(url)")
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
 
@@ -56,4 +57,10 @@ final class API {
                 }
             }.eraseToAnyPublisher()
     }
+}
+
+func printMessage(_ message: String) {
+    #if DEBUG
+        print("API => \(message)")
+    #endif
 }

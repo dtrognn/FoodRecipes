@@ -10,6 +10,13 @@ import SwiftUI
 
 struct FoodsWithCategoryView: View {
     @EnvironmentObject private var router: Router
+    @StateObject private var vm: FoodsWithCategoryViewModel
+    private var category: CategoryItemViewData
+
+    init(_ category: CategoryItemViewData) {
+        self.category = category
+        self._vm = StateObject(wrappedValue: FoodsWithCategoryViewModel(category))
+    }
 
     private var screenConfiguration: ScreenConfiguration {
         .init(title: "Foods With Category",
@@ -23,8 +30,4 @@ struct FoodsWithCategoryView: View {
             Text("")
         }
     }
-}
-
-#Preview {
-    FoodsWithCategoryView()
 }

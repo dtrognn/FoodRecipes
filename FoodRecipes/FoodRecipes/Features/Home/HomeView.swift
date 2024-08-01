@@ -82,8 +82,8 @@ private extension HomeView {
     var categoryListView: some View {
         return LazyVGrid(columns: columns, spacing: AppStyle.layout.standardSpace) {
             ForEach(vm.categories) { category in
-                CategoryItemView(category) { _ in
-                    router.push(to: HomeTabDestination.foodsWithCategory)
+                CategoryItemView(category) { categorySelected in
+                    router.push(to: HomeTabDestination.foodsWithCategory(categorySelected))
                 }
             }
         }.padding(.bottom, AppStyle.layout.standardButtonHeight * 2)

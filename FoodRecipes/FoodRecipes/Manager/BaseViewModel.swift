@@ -10,7 +10,7 @@ import Foundation
 import FRCommon
 import FRCore
 
-open class BaseStore: ObservableObject {
+open class BaseViewModel: ObservableObject {
     var cancellableSet: Set<AnyCancellable> = []
 
     var isLoading = PassthroughSubject<Bool, Never>()

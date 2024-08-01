@@ -9,7 +9,7 @@ import Combine
 import Foundation
 import FRAPILayer
 
-class HomeViewModel: BaseStore {
+class HomeViewModel: BaseViewModel {
     @Published var categories: [CategoryItemViewData] = []
 
     override init() {

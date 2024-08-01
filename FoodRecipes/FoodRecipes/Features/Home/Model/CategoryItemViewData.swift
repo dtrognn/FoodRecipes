@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CategoryItemViewData: Identifiable {
+struct CategoryItemViewData: Identifiable, Hashable {
     let id: String = UUID().uuidString
     let name: String
     let thumb: String
