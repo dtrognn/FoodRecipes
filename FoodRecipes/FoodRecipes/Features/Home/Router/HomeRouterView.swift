@@ -18,6 +18,8 @@ struct HomeRouterView: View {
                     switch destination {
                     case .foodsWithCategory(let category):
                         FoodsWithCategoryView(category)
+                    case .foodDetail(let food):
+                        FoodDetailView(food: food)
                     default:
                         EmptyView()
                     }

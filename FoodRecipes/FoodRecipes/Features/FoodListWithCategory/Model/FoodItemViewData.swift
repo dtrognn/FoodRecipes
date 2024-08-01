@@ -7,7 +7,15 @@
 
 import Foundation
 
-class FoodItemViewData: Identifiable, ObservableObject {
+class FoodItemViewData: Identifiable, ObservableObject, Hashable {
+    static func == (lhs: FoodItemViewData, rhs: FoodItemViewData) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
     var id: String = UUID().uuidString
     var name: String = ""
     var thumb: String = ""

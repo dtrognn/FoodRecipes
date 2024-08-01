@@ -94,8 +94,8 @@ private extension FoodsWithCategoryView {
         } else {
             LazyVGrid(columns: columns, spacing: AppStyle.layout.standardSpace) {
                 ForEach(vm.foods) { food in
-                    FoodWithCategoryItemView(food: food) { _ in
-                        //
+                    FoodWithCategoryItemView(food: food) { meal in
+                        router.push(to: HomeTabDestination.foodDetail(meal))
                     }
                 }
             }.asAnyView
