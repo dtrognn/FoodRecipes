@@ -23,7 +23,7 @@ struct HomeView: View {
 
                 FRScrollView {
                     VStack {
-                        categoriesView
+                        randomRecipesView
                     }.padding(.all, AppStyle.layout.standardSpace)
                 }
             }
@@ -59,19 +59,6 @@ private extension HomeView {
 // MARK: - Categories
 
 private extension HomeView {
-    var categoriesView: some View {
-        return VStack(alignment: .leading, spacing: AppStyle.layout.standardSpace) {
-            categoriesText
-            categoryListView
-        }
-    }
-
-    var categoriesText: some View {
-        return Text(language("Home_A_01"))
-            .font(AppStyle.font.semibold24)
-            .foregroundStyle(AppStyle.theme.textNormalColor)
-    }
-
     var columns: [GridItem] {
         return [
             .init(.flexible(), spacing: AppStyle.layout.standardSpace),
@@ -79,11 +66,11 @@ private extension HomeView {
         ]
     }
 
-    var categoryListView: some View {
-        return LazyVGrid(columns: columns, spacing: AppStyle.layout.standardSpace) {
-            ForEach(vm.categories) { category in
-                CategoryItemView(category) { categorySelected in
-                    router.push(to: HomeTabDestination.foodsWithCategory(categorySelected))
+    var randomRecipesView: some View {
+        return LazyVStack(spacing: AppStyle.layout.standardSpace) {
+            ForEach(vm.recipes) { recipe in
+                RandomRecipeItemView(recipe: recipe) { _ in
+                    //
                 }
             }
         }.padding(.bottom, AppStyle.layout.standardButtonHeight * 2)

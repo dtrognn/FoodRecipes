@@ -9,6 +9,8 @@ import Combine
 import Foundation
 
 final class API {
+    private static let apiKey = "2e32f64031124262b630797c60c382a0"
+
     static func call<Request: Endpoint, Response: Codable>(endpoint: Request, parameters: [String: Any]?) -> AnyPublisher<Response, APIError> {
         guard var components = URLComponents(string: endpoint.baseURL) else {
             return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
@@ -16,9 +18,12 @@ final class API {
 
         components.path = endpoint.path
 
-        if endpoint.method == .GET, let parameters = parameters {
-            components.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+        // Add apiKey to query parameters
+        var queryItems = [URLQueryItem(name: "apiKey", value: apiKey)]
+        if let parameters = parameters {
+            queryItems.append(contentsOf: parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") })
         }
+        components.queryItems = queryItems
 
         guard let url = components.url else {
             return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
@@ -29,7 +34,13 @@ final class API {
         request.httpMethod = endpoint.method.rawValue
 
         // Set headers
-        endpoint.headers?.forEach { request.addValue($0.value, forHTTPHeaderField: $0.key) }
+        var headers: [String: String]
+        if endpoint.onlyUseHeadersDefault {
+            headers = endpoint.headers ?? [:]
+        } else {
+            headers = generateHeader(endpoint.headers)
+        }
+        headers.forEach { request.addValue($0.value, forHTTPHeaderField: $0.key) }
 
         // Set HTTP body for non-GET requests
         if endpoint.method != .GET, let parameters = parameters {
@@ -60,6 +71,21 @@ final class API {
                 }
             }.receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
+    }
+
+    private static func generateHeader(_ requestHeaders: [String: String]?) -> [String: String] {
+        var headers = [String: String]()
+
+        headers[Header.ContentType] = Header.ApplicationJson
+        headers[Header.APIKey] = apiKey
+
+        if let requestHeaders = requestHeaders {
+            for key in requestHeaders.keys {
+                headers[key] = requestHeaders[key]
+            }
+        }
+
+        return headers
     }
 
     static func printFormattedJSON(data: Data) {
