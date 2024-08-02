@@ -44,6 +44,9 @@ final class API {
                 else {
                     throw APIError.invalidResponse
                 }
+
+                printFormattedJSON(data: data)
+
                 return data
             }.decode(type: Response.self, decoder: JSONDecoder())
             .mapError { error -> APIError in
@@ -55,7 +58,21 @@ final class API {
                 default:
                     return .invalidResponse
                 }
-            }.eraseToAnyPublisher()
+            }.receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
+    static func printFormattedJSON(data: Data) {
+        do {
+            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+            let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [.prettyPrinted])
+
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                printMessage("Response => \(jsonString)")
+            }
+        } catch {
+            printMessage("Failed to format JSON: \(error.localizedDescription)")
+        }
     }
 }
 

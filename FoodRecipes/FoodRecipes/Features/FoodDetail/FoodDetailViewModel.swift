@@ -15,6 +15,8 @@ class FoodDetailViewModel: BaseViewModel {
 
     init(_ food: FoodItemViewData) {
         self.food = food
+        super.init()
+        apiSearchMealById()
     }
 
     private func apiSearchMealById() {

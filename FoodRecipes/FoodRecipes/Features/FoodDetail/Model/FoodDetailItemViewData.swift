@@ -15,4 +15,24 @@ struct FoodDetailItemViewData: Identifiable {
     init(_ meal: MealDetail) {
         self.meal = meal
     }
+
+    func getThumb() -> String {
+        return meal.mealThumb
+    }
+
+    func getIngredients() -> [String] {
+        return meal.ingredients.compactMap { $0 }.filter { !$0.isEmpty }
+    }
+
+    func getMeasures() -> [String] {
+        return meal.measures.compactMap { $0 }.filter { !$0.isEmpty }
+    }
+
+    func getInstructions() -> String {
+        return meal.instructions
+    }
+
+    func getIngredientsWithMeasures() -> [String: String] {
+        return meal.ingredientsWithMeasures
+    }
 }

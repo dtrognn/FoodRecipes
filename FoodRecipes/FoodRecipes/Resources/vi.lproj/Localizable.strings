@@ -10,3 +10,6 @@
 
 "Food_List_A_01" = "Danh sách món ăn ";
 "Food_List_A_02" = "Chưa có món ăn trong danh mục %@";
+
+"Food_Detail_A_01" = "Nguyên liệu";
+"Food_Detail_A_02" = "Hướng dẫn";

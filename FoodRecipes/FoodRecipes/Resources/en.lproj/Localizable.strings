@@ -10,3 +10,6 @@
 
 "Food_List_A_01" = "Food list ";
 "Food_List_A_02" = "There are no dishes in list %@ yet";
+
+"Food_Detail_A_01" = "Ingredients";
+"Food_Detail_A_02" = "Instructions";

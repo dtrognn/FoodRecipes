@@ -17,12 +17,23 @@ public struct MealDetail: Codable, Identifiable {
     public let mealThumb: String
     public let tags: String?
     public let youtube: String
-    public let ingredients: [String?]
-    public let measures: [String?]
+    public let ingredients: [String]
+    public let measures: [String]
     public let source: String?
     public let imageSource: String?
     public let creativeCommonsConfirmed: String?
     public let dateModified: String?
+
+    public var ingredientsWithMeasures: [String: String] {
+        var dictionary = [String: String]()
+        for (index, ingredient) in ingredients.enumerated() {
+            let measure = index < measures.count ? measures[index] : ""
+            if !ingredient.isEmpty {
+                dictionary[ingredient] = measure
+            }
+        }
+        return dictionary
+    }
 
     enum CodingKeys: String, CodingKey {
         case id = "idMeal"
@@ -34,8 +45,6 @@ public struct MealDetail: Codable, Identifiable {
         case mealThumb = "strMealThumb"
         case tags = "strTags"
         case youtube = "strYoutube"
-        case ingredients = "strIngredients"
-        case measures = "strMeasures"
         case source = "strSource"
         case imageSource = "strImageSource"
         case creativeCommonsConfirmed = "strCreativeCommonsConfirmed"
@@ -70,7 +79,7 @@ public struct MealDetail: Codable, Identifiable {
         dateModified = try container.decodeIfPresent(String.self, forKey: .dateModified)
 
         let additionalContainer = try decoder.container(keyedBy: AdditionalKeys.self)
-        ingredients = (1...20).map { try? additionalContainer.decodeIfPresent(String.self, forKey: AdditionalKeys(stringValue: "strIngredient\($0)")!) }
-        measures = (1...20).map { try? additionalContainer.decodeIfPresent(String.self, forKey: AdditionalKeys(stringValue: "strMeasure\($0)")!) }
+        ingredients = (1...20).compactMap { try? additionalContainer.decodeIfPresent(String.self, forKey: AdditionalKeys(stringValue: "strIngredient\($0)")!) }.filter { !$0.isEmpty }
+        measures = (1...20).compactMap { try? additionalContainer.decodeIfPresent(String.self, forKey: AdditionalKeys(stringValue: "strMeasure\($0)")!) }.filter { !$0.isEmpty }
     }
 }
