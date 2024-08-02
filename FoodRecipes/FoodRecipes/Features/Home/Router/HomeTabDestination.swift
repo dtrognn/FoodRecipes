@@ -8,6 +8,5 @@
 import Foundation
 
 enum HomeTabDestination: Hashable {
-    case foodsWithCategory(CategoryItemViewData)
-    case foodDetail(FoodItemViewData)
+    case foodDetail
 }
