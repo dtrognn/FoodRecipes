@@ -19,4 +19,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '16.0'
 
   s.source_files = 'FRCore/**/*.{swift,h,m}'
+  s.resources = 'FRCore/**/*.{png,xcassets,json,ttf,txt,storyboard,xib,xcdatamodeld,strings}'
+
 end

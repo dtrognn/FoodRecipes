@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '16.0'
 
   s.source_files = 'FRAPILayer/**/*.{swift,h,m}'
+  s.resources = 'FRAPILayer/**/*.{png,xcassets,json,ttf,txt,storyboard,xib,xcdatamodeld,strings}'
 
   s.dependency 'FRCore'
 end

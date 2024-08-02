@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
   s.source_files = 'FRCommon/**/*.{swift,h,m}'
   s.resources = 'FRCommon/**/*.{png,xcassets,json,ttf,txt,storyboard,xib,xcdatamodeld,strings}'
 
+  s.dependency 'Kingfisher'
   s.dependency 'SDWebImageSwiftUI'
 
 end
