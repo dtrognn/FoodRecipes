@@ -12,7 +12,6 @@ public protocol Endpoint {
     associatedtype Request: Codable
     associatedtype Response: Codable
 
-    var baseURL: String { get }
     var path: String { get }
     var method: HTTPMethod { get }
     var onlyUseHeadersDefault: Bool { get }
@@ -22,10 +21,6 @@ public protocol Endpoint {
 public extension Endpoint {
     var onlyUseHeadersDefault: Bool {
         return false
-    }
-
-    var baseURL: String {
-        return "https://api.spoonacular.com"
     }
 
     func request(parameters: Request) -> AnyPublisher<Response, APIError> {

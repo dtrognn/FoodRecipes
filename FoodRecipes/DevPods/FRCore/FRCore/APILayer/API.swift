@@ -9,17 +9,15 @@ import Combine
 import Foundation
 
 final class API {
-    private static let apiKey = "2e32f64031124262b630797c60c382a0"
-
     static func call<Request: Endpoint, Response: Codable>(endpoint: Request, parameters: [String: Any]?) -> AnyPublisher<Response, APIError> {
-        guard var components = URLComponents(string: endpoint.baseURL) else {
+        guard var components = URLComponents(string: APIConfig.shared.urlEnviroment.url) else {
             return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
         }
 
         components.path = endpoint.path
 
         // Add apiKey to query parameters
-        var queryItems = [URLQueryItem(name: "apiKey", value: apiKey)]
+        var queryItems = [URLQueryItem(name: "apiKey", value: APIConfig.shared.urlEnviroment.apiKey)]
         if let parameters = parameters {
             queryItems.append(contentsOf: parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") })
         }
@@ -77,7 +75,7 @@ final class API {
         var headers = [String: String]()
 
         headers[Header.ContentType] = Header.ApplicationJson
-        headers[Header.APIKey] = apiKey
+        headers[Header.APIKey] = APIConfig.shared.urlEnviroment.apiKey
 
         if let requestHeaders = requestHeaders {
             for key in requestHeaders.keys {

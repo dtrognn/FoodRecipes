@@ -25,3 +25,28 @@ public enum Header {
     public static let AppName = "AppName"
     public static let Version = "Version"
 }
+
+public struct URLEnvironment {
+    public var url: String
+    public var apiKey: String
+
+    public init(url: String, apiKey: String) {
+        self.url = url
+        self.apiKey = apiKey
+    }
+}
+
+public class APIConfig {
+    public static let shared = APIConfig()
+
+    private init() {}
+    private var _baseUrl: URLEnvironment!
+
+    public func configure(baseUrl: URLEnvironment) {
+        _baseUrl = baseUrl
+    }
+
+    public var urlEnviroment: URLEnvironment {
+        return _baseUrl
+    }
+}
