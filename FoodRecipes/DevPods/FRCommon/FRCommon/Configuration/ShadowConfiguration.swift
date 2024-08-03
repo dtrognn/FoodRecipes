@@ -14,10 +14,10 @@ public struct ShadowConfiguration {
     public var shadowY: Double
 
     public init() {
-        shadowRadius = 5.0
+        shadowRadius = 3.0
         shadowColor = AppStyle.theme.shadowColor
-        shadowX = 0
-        shadowY = 3
+        shadowX = -2
+        shadowY = 2
     }
 
     public init(shadowRadius: Double, shadowColor: Color, shadowX: Double, shadowY: Double) {

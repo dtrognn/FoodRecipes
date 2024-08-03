@@ -67,7 +67,7 @@ private extension HomeView {
     }
 
     var randomRecipesView: some View {
-        return LazyVStack(spacing: AppStyle.layout.standardSpace) {
+        return LazyVGrid(columns: columns, spacing: AppStyle.layout.standardSpace) {
             ForEach(vm.recipes) { recipe in
                 RandomRecipeItemView(recipe: recipe) { _ in
                     //

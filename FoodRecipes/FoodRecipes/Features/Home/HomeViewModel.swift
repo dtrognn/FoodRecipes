@@ -23,13 +23,16 @@ class HomeViewModel: BaseViewModel {
 
     private func apiGetRandomRecipes() {
         print("AAA time start: \(Date())")
-        let params = GetRandomRecipesEndpoint.Request(includeNutrition: false, number: 10)
+        showLoading(true)
+        let params = GetRandomRecipesEndpoint.Request(includeNutrition: false, number: 20)
         GetRandomRecipesEndpoint.service.request(parameters: params)
             .sink { [weak self] error in
                 guard let self = self else { return }
+                self.showLoading(false)
                 self.handleError(error)
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
+                self.showLoading(false)
 
                 guard let recipes = response.recipes else { return }
 

@@ -28,8 +28,7 @@ struct RandomRecipeItemView: View {
                 thumbView
                     .overlay(AppStyle.theme.iconOffColor.opacity(0.7))
                 titleText
-            }.frame(width: width, height: width / (16 / 9))
-                .cornerRadius(AppStyle.layout.standardCornerRadius)
+            }.cornerRadius(AppStyle.layout.standardCornerRadius)
                 .applyShadowView()
         }
     }
@@ -37,16 +36,16 @@ struct RandomRecipeItemView: View {
 
 private extension RandomRecipeItemView {
     var thumbView: some View {
-        return ImageURLView(recipe.getThumb())
-            .scaledToFit()
+        return ImageUrl(urlString: recipe.getThumb()) {
+            ProgressView().applyTheme()
+        }
     }
 
     var titleText: some View {
         return Text(recipe.getTitle())
             .font(AppStyle.font.semibold16)
-            .foregroundStyle(AppStyle.theme.textNormalColor)
+            .foregroundStyle(AppStyle.theme.textWhiteColor)
             .multilineTextAlignment(.center)
-//            .lineLimit(2)
             .padding(.all, AppStyle.layout.standardSpace)
     }
 }

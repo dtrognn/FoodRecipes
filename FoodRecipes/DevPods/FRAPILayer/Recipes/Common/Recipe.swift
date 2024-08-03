@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Recipe: Codable {
-    public let id: Int?
+    public let id: Int
     public let title: String
     public let image: String
     public let imageType: String?

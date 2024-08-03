@@ -14,13 +14,13 @@ public struct WinePairing: Codable {
 }
 
 public struct ProductMatch: Codable {
-    public let id: Int
-    public let title: String
-    public let description: String
-    public let price: String
-    public let imageUrl: String
-    public let averageRating: Double
-    public let ratingCount: Int
-    public let score: Double
-    public let link: String
+    public let id: Int?
+    public let title: String?
+    public let description: String?
+    public let price: String?
+    public let imageUrl: String?
+    public let averageRating: Double?
+    public let ratingCount: Int?
+    public let score: Double?
+    public let link: String?
 }

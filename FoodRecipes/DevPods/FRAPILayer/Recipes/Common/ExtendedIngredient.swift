@@ -27,13 +27,13 @@ public struct Measures: Codable {
 }
 
 public struct Metric: Codable {
-    public let amount: Double
-    public let unitLong: String
-    public let unitShort: String
+    public let amount: Double?
+    public let unitLong: String?
+    public let unitShort: String?
 }
 
 public struct Us: Codable {
-    public let amount: Double
-    public let unitLong: String
-    public let unitShort: String
+    public let amount: Double?
+    public let unitLong: String?
+    public let unitShort: String?
 }
