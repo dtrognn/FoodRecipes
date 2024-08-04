@@ -59,6 +59,7 @@ final class API {
                 return data
             }.decode(type: Response.self, decoder: JSONDecoder())
             .mapError { error -> APIError in
+                printMessage("error: \(error.localizedDescription)")
                 switch error {
                 case is URLError:
                     return .invalidResponse

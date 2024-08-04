@@ -69,8 +69,8 @@ private extension HomeView {
     var randomRecipesView: some View {
         return LazyVGrid(columns: columns, spacing: AppStyle.layout.standardSpace) {
             ForEach(vm.recipes) { recipe in
-                RandomRecipeItemView(recipe: recipe) { _ in
-                    //
+                RandomRecipeItemView(recipe: recipe) { recipeSelected in
+                    router.push(to: HomeTabDestination.recipeDetail(recipeSelected))
                 }
             }
         }.padding(.bottom, AppStyle.layout.standardButtonHeight * 2)
