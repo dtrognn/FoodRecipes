@@ -18,7 +18,7 @@ struct RecipeParamItemView: View {
     }
 
     var body: some View {
-        VStack(spacing: AppStyle.layout.mediumSpace) {
+        VStack(spacing: AppStyle.layout.smallSpace) {
             valueText
             descriptionText
         }

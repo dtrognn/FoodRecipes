@@ -11,12 +11,14 @@ import SwiftUI
 import UIKit
 
 class RecipeDetailViewModel: BaseViewModel {
-    @Published var recipe: RecipeItemViewData
-    @Published var summary: String = ""
+    @Published var recipe: RecipeItemViewData = .init()
 
-    init(_ recipe: RecipeItemViewData) {
-        self.recipe = recipe
+    private var recipeId: Int
+
+    init(_ recipeId: Int) {
+        self.recipeId = recipeId
         super.init()
+        loadData()
     }
 
     func loadData() {
@@ -26,7 +28,7 @@ class RecipeDetailViewModel: BaseViewModel {
     private func apiGetRecipeInfo() {
         showLoading(true)
         let params = GetRecipeInfomationEndpoint.Request(includeNutrition: true)
-        GetRecipeInfomationEndpoint.service(recipe.getId()).request(parameters: params)
+        GetRecipeInfomationEndpoint.service(recipeId).request(parameters: params)
             .sink { [weak self] error in
                 guard let self = self else { return }
                 self.showLoading(false)
@@ -35,22 +37,51 @@ class RecipeDetailViewModel: BaseViewModel {
                 guard let self = self else { return }
                 self.showLoading(false)
 
-                self.summary = response.summary
-
+                self.recipe = RecipeItemViewData(response)
             }.store(in: &cancellableSet)
     }
 }
 
-struct AttributedText: UIViewRepresentable {
-    let attributedString: NSAttributedString
+private extension RecipeItemViewData {
+    convenience init(_ data: GetRecipeInfomationEndpoint.Response) {
+        self.init()
+        self.id = data.id
+        self.title = data.title
+        self.image = data.image
+        self.summary = data.summary
+        self.cookingMinutes = data.cookingMinutes
+        self.servings = data.servings
+        self.aggregateLikes = data.aggregateLikes
+        self.spoonacularScore = data.spoonacularScore
+        self.pricePerServing = data.pricePerServing
+        self.dishTypes = data.dishTypes ?? []
+        self.ingredients = data.extendedIngredients?.map { IngredientItemData($0) } ?? []
+    }
+}
 
-    func makeUIView(context: Context) -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 0
-        return label
+private extension IngredientItemData {
+    convenience init(_ data: ExtendedIngredient) {
+        self.init()
+        self.id = data.id
+        self.name = data.name
+        self.nameClean = data.nameClean
+        self.image = data.image
+        self.measures = MeasuresData(us: MeasureInfoData(data.measures?.us), metric: MeasureInfoData(data.measures?.metric))
+    }
+}
+
+private extension MeasureInfoData {
+    convenience init(_ data: Us?) {
+        self.init()
+        self.amount = data?.amount ?? 0.0
+        self.unitLong = data?.unitLong ?? ""
+        self.unitShort = data?.unitShort ?? ""
     }
 
-    func updateUIView(_ uiView: UILabel, context: Context) {
-        uiView.attributedText = attributedString
+    convenience init(_ data: Metric?) {
+        self.init()
+        self.amount = data?.amount ?? 0.0
+        self.unitLong = data?.unitLong ?? ""
+        self.unitShort = data?.unitShort ?? ""
     }
 }

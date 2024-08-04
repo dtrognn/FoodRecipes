@@ -39,5 +39,11 @@ public struct GetRecipeInfomationEndpoint: Endpoint {
         public let instructions: String
         public let summary: String
         public let dishTypes: [String]?
+        public let cookingMinutes: Int?
+        public let servings: Int
+        public let aggregateLikes: Int
+        public let spoonacularScore: Double
+        public let pricePerServing: Double
+        public let extendedIngredients: [ExtendedIngredient]?
     }
 }

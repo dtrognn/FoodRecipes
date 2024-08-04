@@ -11,16 +11,14 @@ import SwiftUI
 struct RecipeDetailView: View {
     @EnvironmentObject private var router: Router
     @StateObject private var vm: RecipeDetailViewModel
-    private var recipe: RecipeItemViewData
 
-    init(_ recipe: RecipeItemViewData) {
-        self.recipe = recipe
-        self._vm = StateObject(wrappedValue: RecipeDetailViewModel(recipe))
+    init(_ recipeId: Int) {
+        self._vm = StateObject(wrappedValue: RecipeDetailViewModel(recipeId))
     }
 
     private var screenConfiguration: ScreenConfiguration {
         return .init(
-            title: recipe.getTitle(),
+            title: vm.recipe.title,
             showBackButton: true,
             showNaviBar: true
         )
@@ -31,53 +29,64 @@ struct RecipeDetailView: View {
             FRScrollView {
                 VStack(spacing: AppStyle.layout.standardSpace) {
                     recipeImage
-                    instructionsView
+                    summaryView
+                    RecipePramView(vm.recipe)
+                    DishesTypeView(vm.recipe)
+                    IngredientsView(vm.recipe.ingredients)
                 }.padding(.all, AppStyle.layout.standardSpace)
+                    .padding(.bottom, AppStyle.layout.largeSpace)
             }
-        }.onAppear {
-            vm.loadData()
         }
     }
 }
 
 private extension RecipeDetailView {
     var recipeImage: some View {
-        return ImageUrl(urlString: recipe.getThumb(.xxlarge)) {
+        return ImageUrl(urlString: vm.recipe.image) {
             ProgressView().applyTheme()
         }.cornerRadius(AppStyle.layout.standardSpace)
             .applyShadowView()
     }
 
-    var instructionsView: some View {
-        return ZStack(alignment: .bottomTrailing) {
-            instructionsText
-//            showMoreButton
+    var summaryView: some View {
+        return VStack(spacing: AppStyle.layout.standardSpace) {
+            HStack(spacing: AppStyle.layout.zero) {
+                summaryText
+                Spacer()
+                summarySeeDetailButton
+            }
+            summaryDescriptionText
         }
     }
 
-    var instructionsText: some View {
-        return Text(vm.summary)
+    var summaryText: some View {
+        return Text(language("Recipe_Detail_A_01"))
+            .font(AppStyle.font.semibold16)
+            .foregroundStyle(AppStyle.theme.textNormalColor)
+    }
+
+    var summarySeeDetailButton: some View {
+        return Button {
+            // TODO: -
+        } label: {
+            Text(language("Recipe_Detail_A_02"))
+                .font(AppStyle.font.medium16)
+                .foregroundStyle(AppStyle.theme.textHightlightColor)
+        }
+    }
+
+    var summaryDescriptionText: some View {
+        return Text(vm.recipe.summary)
             .font(AppStyle.font.regular16)
             .foregroundStyle(AppStyle.theme.textNormalColor)
+            .frame(maxWidth: .infinity)
             .lineLimit(5)
             .lineSpacing(AppStyle.layout.lineSpacing)
             .multilineTextAlignment(.leading)
     }
-
-    var showMoreButton: some View {
-        return Button {
-            // TODO: -
-        } label: {
-            Text("show more")
-                .font(AppStyle.font.regular16)
-                .foregroundStyle(AppStyle.theme.textUnderlineColor)
-                .padding(.all, 1)
-                .background(AppStyle.theme.backgroundColor)
-        }
-    }
 }
 
-//extension String {
+// extension String {
 //    var htmlToAttributedString: AttributedString {
 //        guard let data = data(using: .utf8) else {
 //            return AttributedString("")
@@ -109,4 +118,4 @@ private extension RecipeDetailView {
 //            return AttributedString("")
 //        }
 //    }
-//}
+// }

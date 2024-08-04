@@ -9,21 +9,22 @@ import Foundation
 
 public struct ExtendedIngredient: Codable {
     public let aisle: String?
-    public let amount: Double?
+    public let amount: Double
     public let consistency: String?
-    public let id: Int?
-    public let image: String?
+    public let id: Int
+    public let image: String
     public let measures: Measures?
     public let meta: [String]?
-    public let name: String?
+    public let name: String
     public let original: String?
     public let originalName: String?
     public let unit: String?
+    public let nameClean: String?
 }
 
 public struct Measures: Codable {
-    public let metric: Metric?
-    public let us: Us?
+    public let metric: Metric
+    public let us: Us
 }
 
 public struct Metric: Codable {

@@ -11,5 +11,10 @@
 "Food_List_A_01" = "Food list ";
 "Food_List_A_02" = "There are no dishes in list %@ yet";
 
-"Food_Detail_A_01" = "Ingredients";
-"Food_Detail_A_02" = "Instructions";
+"Recipe_Detail_A_01" = "Tóm tắt";
+"Recipe_Detail_A_02" = "Xem chi tiết";
+"Recipe_Detail_A_03" = "Likes";
+"Recipe_Detail_A_04" = "Minutes";
+"Recipe_Detail_A_05" = "Servings";
+"Recipe_Detail_A_06" = "Prices";
+"Recipe_Detail_A_07" = "Ingredients";
