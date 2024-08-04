@@ -40,8 +40,9 @@ private extension RecipePramView {
     }
 
     var cookingMinutesParamView: some View {
-        return RecipeParamItemView(description: language("Recipe_Detail_A_04"),
-                                   value: recipe.cookingMinutes.toString)
+        return RecipeParamItemView(
+            description: language("Recipe_Detail_A_04"),
+            value: (recipe.cookingMinutes == nil) ? "~" : recipe.cookingMinutes?.toString ?? "")
     }
 
     var servingsParamView: some View {
