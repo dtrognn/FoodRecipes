@@ -1,5 +1,5 @@
 //
-//  RandomRecipeItemView.swift
+//  ComplexRecipeItemView.swift
 //  FoodRecipes
 //
 //  Created by dtrognn on 3/8/24.
@@ -8,13 +8,13 @@
 import FRCommon
 import SwiftUI
 
-struct RandomRecipeItemView: View {
-    private var recipe: RecipeItemViewData
-    private var onClick: (RecipeItemViewData) -> Void
+struct ComplexRecipeItemView: View {
+    private var recipe: ComplexRecipeItemViewData
+    private var onClick: (ComplexRecipeItemViewData) -> Void
 
     private var width: CGFloat = UIScreen.main.bounds.width - 2 * AppStyle.layout.standardSpace
 
-    init(recipe: RecipeItemViewData, onClick: @escaping (RecipeItemViewData) -> Void) {
+    init(recipe: ComplexRecipeItemViewData, onClick: @escaping (ComplexRecipeItemViewData) -> Void) {
         self.recipe = recipe
         self.onClick = onClick
     }
@@ -34,15 +34,15 @@ struct RandomRecipeItemView: View {
     }
 }
 
-private extension RandomRecipeItemView {
+private extension ComplexRecipeItemView {
     var thumbView: some View {
-        return ImageUrl(urlString: recipe.getThumb()) {
+        return ImageUrl(urlString: recipe.image) {
             ProgressView().applyTheme()
         }
     }
 
     var titleText: some View {
-        return Text(recipe.getTitle())
+        return Text(recipe.title)
             .font(AppStyle.font.semibold16)
             .foregroundStyle(AppStyle.theme.textWhiteColor)
             .multilineTextAlignment(.center)

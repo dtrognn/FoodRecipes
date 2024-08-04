@@ -10,7 +10,7 @@ import Foundation
 import FRAPILayer
 
 class HomeViewModel: BaseViewModel {
-    @Published var recipes: [RecipeItemViewData] = []
+    @Published var recipes: [ComplexRecipeItemViewData] = []
 
     override init() {
         super.init()
@@ -22,10 +22,9 @@ class HomeViewModel: BaseViewModel {
     }
 
     private func apiGetRandomRecipes() {
-        print("AAA time start: \(Date())")
         showLoading(true)
-        let params = GetRandomRecipesEndpoint.Request(includeNutrition: false, number: 20)
-        GetRandomRecipesEndpoint.service.request(parameters: params)
+        let params = SearchRecipesComplexEndpoint.Request(number: 20)
+        SearchRecipesComplexEndpoint.service.request(parameters: params)
             .sink { [weak self] error in
                 guard let self = self else { return }
                 self.showLoading(false)
@@ -34,10 +33,16 @@ class HomeViewModel: BaseViewModel {
                 guard let self = self else { return }
                 self.showLoading(false)
 
-                guard let recipes = response.recipes else { return }
-
-                self.recipes = recipes.map { RecipeItemViewData($0) }
-                print("AAA time end: \(Date())")
+                guard let recipes = response.results else { return }
+                self.recipes = recipes.map { ComplexRecipeItemViewData($0) }
             }.store(in: &cancellableSet)
+    }
+}
+
+private extension ComplexRecipeItemViewData {
+    init(_ data: SearchRecipesComplexEndpoint.ComplexRecipe) {
+        self.id = data.id
+        self.title = data.title
+        self.image = data.image
     }
 }

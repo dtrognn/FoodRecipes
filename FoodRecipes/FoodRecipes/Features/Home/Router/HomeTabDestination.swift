@@ -8,5 +8,5 @@
 import Foundation
 
 enum HomeTabDestination: Hashable {
-    case recipeDetail(RecipeItemViewData)
+    case recipeDetail(Int)
 }
