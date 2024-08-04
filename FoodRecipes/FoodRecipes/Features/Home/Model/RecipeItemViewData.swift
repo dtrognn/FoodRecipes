@@ -18,23 +18,33 @@ enum RecipeImageSizeType: String {
     case xxlarge = "636x393"
 }
 
-struct RecipeItemViewData: Identifiable {
+struct RecipeItemViewData: Identifiable, Hashable {
+    static func == (lhs: RecipeItemViewData, rhs: RecipeItemViewData) -> Bool {
+        return lhs.getId() == rhs.getId()
+    }
+
+    func hash(into hasher: inout Hasher) {}
+
     let id: String = UUID().uuidString
 
-    private var recipe: Recipe
+    private var recipe: GetRandomRecipesEndpoint.RandomRecipe
 
-    init(_ recipe: Recipe) {
+    init(_ recipe: GetRandomRecipesEndpoint.RandomRecipe) {
         self.recipe = recipe
     }
 
+    func getId() -> Int {
+        return recipe.id ?? 0
+    }
+
     func getTitle() -> String {
-        return recipe.title
+        return recipe.title ?? ""
     }
 
     func getThumb(_ size: RecipeImageSizeType = .large) -> String {
         // https://img.spoonacular.com/recipes/{ID}-{SIZE}.{TYPE}
         let baseUrl = DefineConfiguration.imageBaseUrl
-        let thumbUrl = String(format: "%@/recipes/%d-%@.%@", baseUrl, recipe.id, size.rawValue, recipe.imageType ?? "jpg")
+        let thumbUrl = String(format: "%@/recipes/%d-%@.%@", baseUrl, recipe.id ?? 0, size.rawValue, recipe.imageType ?? "jpg")
         return thumbUrl
     }
 }

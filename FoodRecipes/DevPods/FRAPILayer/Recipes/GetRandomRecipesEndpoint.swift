@@ -38,6 +38,13 @@ public struct GetRandomRecipesEndpoint: Endpoint {
     }
 
     public struct Response: Codable {
-        public let recipes: [Recipe]?
+        public let recipes: [RandomRecipe]?
+    }
+
+    public struct RandomRecipe: Codable {
+        public let id: Int?
+        public let title: String?
+        public let image: String?
+        public let imageType: String?
     }
 }
