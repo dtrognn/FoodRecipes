@@ -8,6 +8,7 @@
 import SwiftUI
 
 public protocol IFRTheme {
+    var textWhiteColor: Color { get }
     var textNoteColor: Color { get }
     var textNormalColor: Color { get }
     var textUnderlineColor: Color { get }
@@ -69,6 +70,7 @@ struct AppLightTheme: IFRTheme {
     var btnEnableColor: Color { return Color(hexString: "#C08261")! }
     var btnDisableColor: Color { return Color(hexString: "#9E9FA5")! }
 
+    var textWhiteColor: Color { return Color(hexString: "#FFFFFF", opacity: 1)! }
     var textNoteColor: Color { return Color(hexString: "#91919F", opacity: 0.6)! } // "#262626")! }
     var textNormalColor: Color { return Color(hexString: "#000000")! }
     var textUnderlineColor: Color { return Color(hexString: "#7F3DFF")! } // Color { return Color.blue }
@@ -92,7 +94,7 @@ struct AppLightTheme: IFRTheme {
     var tfFillNormalColor: Color { return Color(hexString: "#FFFFFF")! }
     var tfFillDisableColor: Color { return Color(hexString: "#011222", opacity: 0.05)! }
 
-    var shadowColor: Color { return Color(hexString: "#000000")!.opacity(0.16) }
+    var shadowColor: Color { return Color(hexString: "#000000")!.opacity(0.6) }
     var lineColor: Color { return Color(hexString: "#E6E6E6")! }
 
     var iconColor: Color { return Color(hexString: "#7F3DFF")! }
@@ -122,6 +124,7 @@ struct AppDarkTheme: IFRTheme {
     var btnEnableColor: Color { return Color(hexString: "#C08261")! }
     var btnDisableColor: Color { return Color(hexString: "#9E9FA5")! }
 
+    var textWhiteColor: Color { return Color(hexString: "#FFFFFF", opacity: 1)! }
     var textNoteColor: Color { return Color(hexString: "#91919F", opacity: 0.6)! } // "#262626")! }
     var textNormalColor: Color { return Color(hexString: "#FFFFFF")! }
     var textUnderlineColor: Color { return Color(hexString: "#7F3DFF")! } // Color { return Color.blue }
@@ -145,7 +148,7 @@ struct AppDarkTheme: IFRTheme {
     var tfFillNormalColor: Color { return Color(hexString: "#264653")! }
     var tfFillDisableColor: Color { return Color(hexString: "#011222", opacity: 0.05)! }
 
-    var shadowColor: Color { return Color(hexString: "#000000")!.opacity(0.16) }
+    var shadowColor: Color { return Color(hexString: "#000000")!.opacity(0.6) }
     var lineColor: Color { return Color(hexString: "#E6E6E6")! }
 
     var iconColor: Color { return Color(hexString: "#7F3DFF")! }

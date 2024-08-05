@@ -10,7 +10,7 @@ import Foundation
 import FRCommon
 import FRCore
 
-open class BaseStore: ObservableObject {
+open class BaseViewModel: ObservableObject {
     var cancellableSet: Set<AnyCancellable> = []
 
     var isLoading = PassthroughSubject<Bool, Never>()
@@ -30,8 +30,8 @@ open class BaseStore: ObservableObject {
         switch error {
         case .finished:
             break
-        case .failure(let error):
-            print("AAA error: \(error.localizedDescription)")
+        case .failure:
+            showErrorMessage(language("Error_A_01"))
         }
     }
 

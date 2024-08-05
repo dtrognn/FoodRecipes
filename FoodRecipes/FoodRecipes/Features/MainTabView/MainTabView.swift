@@ -22,7 +22,7 @@ struct MainTabView: View {
                 .tabItem {
                     TabItem(tabType: .profile)
                 }.tag(TabbarRouter.TabType.profile)
-        }.tint(Color.red)
+        }.tint(AppStyle.theme.iconColor)
     }
 }
 

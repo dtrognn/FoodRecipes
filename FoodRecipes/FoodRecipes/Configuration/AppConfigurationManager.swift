@@ -7,6 +7,7 @@
 
 import Foundation
 import FRCommon
+import FRCore
 
 final class AppConfigurationManager {
     static let shared = AppConfigurationManager()
@@ -22,6 +23,7 @@ final class AppConfigurationManager {
 
     func loadModuleConfig() {
         FRCommonConfig.shared.loadConfig()
+        APIConfig.shared.configure(baseUrl: URLEnvironment(url: DefineConfiguration.baseUrl, apiKey: DefineConfiguration.apiKey))
     }
 
     private func configureLoading() {

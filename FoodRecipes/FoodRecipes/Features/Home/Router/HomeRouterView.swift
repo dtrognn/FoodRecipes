@@ -16,8 +16,8 @@ struct HomeRouterView: View {
             HomeView()
                 .navigationDestination(for: HomeTabDestination.self) { destination in
                     switch destination {
-                    case .foodsWithCategory:
-                        FoodsWithCategoryView()
+                    case .recipeDetail(let id):
+                        RecipeDetailView(id)
                     default:
                         EmptyView()
                     }

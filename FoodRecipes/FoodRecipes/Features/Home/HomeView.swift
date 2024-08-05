@@ -18,16 +18,62 @@ struct HomeView: View {
 
     var body: some View {
         ScreenContainerView(screenConfiguration) {
-            VStack {
-                Spacer()
-                Button {
-                    router.push(to: HomeTabDestination.foodsWithCategory)
-                } label: {
-                    Text("Home View")
+            VStack(spacing: AppStyle.layout.standardSpace) {
+                headerView
+
+                FRScrollView {
+                    VStack {
+                        randomRecipesView
+                    }.padding(.all, AppStyle.layout.standardSpace)
                 }
-                Spacer()
             }
         }
+    }
+}
+
+// MARK: - Header
+
+private extension HomeView {
+    var headerView: some View {
+        return HStack(spacing: AppStyle.layout.zero) {
+            helloUserText
+            Spacer()
+            userImageView
+        }.padding(.horizontal, AppStyle.layout.standardSpace)
+    }
+
+    var helloUserText: some View {
+        return Text(String(format: language("Home_A_02"), "dtrognn"))
+            .font(AppStyle.font.medium18)
+            .foregroundStyle(AppStyle.theme.textNormalColor)
+            .lineLimit(1)
+    }
+
+    var userImageView: some View {
+        return Image(systemName: "person.crop.circle")
+            .resizable()
+            .frame(width: AppStyle.layout.largeSpace, height: AppStyle.layout.largeSpace)
+    }
+}
+
+// MARK: - Categories
+
+private extension HomeView {
+    var columns: [GridItem] {
+        return [
+            .init(.flexible(), spacing: AppStyle.layout.standardSpace),
+            .init(.flexible(), spacing: AppStyle.layout.standardSpace),
+        ]
+    }
+
+    var randomRecipesView: some View {
+        return LazyVGrid(columns: columns, spacing: AppStyle.layout.standardSpace) {
+            ForEach(vm.recipes) { recipe in
+                ComplexRecipeItemView(recipe: recipe) { recipeSelected in
+                    router.push(to: HomeTabDestination.recipeDetail(recipeSelected.id))
+                }
+            }
+        }.padding(.bottom, AppStyle.layout.standardButtonHeight * 2)
     }
 }
 
