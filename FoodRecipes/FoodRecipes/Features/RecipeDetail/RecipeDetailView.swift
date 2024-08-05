@@ -34,6 +34,7 @@ struct RecipeDetailView: View {
                     RecipePramView(vm.recipe)
                     DishesTypeView(vm.recipe)
                     IngredientsView(vm.recipe.ingredients)
+                    InstructionsView(vm.recipe.instructions)
                 }.padding(.all, AppStyle.layout.standardSpace)
                     .padding(.bottom, AppStyle.layout.largeSpace)
             }
@@ -57,12 +58,12 @@ private extension RecipeDetailView {
     }
 
     var summaryView: some View {
-        return VStack(spacing: AppStyle.layout.standardSpace) {
-//            HStack(spacing: AppStyle.layout.zero) {
-//                summaryText
-//                Spacer()
-//                summarySeeDetailButton
-//            }
+        return VStack(spacing: AppStyle.layout.mediumSpace) {
+            HStack(spacing: AppStyle.layout.zero) {
+                summaryText
+                Spacer()
+                summarySeeDetailButton
+            }
             summaryDescriptionText
         }
     }

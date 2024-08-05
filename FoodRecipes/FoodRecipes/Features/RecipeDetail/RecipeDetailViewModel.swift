@@ -56,6 +56,7 @@ private extension RecipeItemViewData {
         self.pricePerServing = data.pricePerServing
         self.dishTypes = data.dishTypes ?? []
         self.ingredients = data.extendedIngredients?.map { IngredientItemData($0) } ?? []
+        self.instructions = data.analyzedInstructions?.map { InstructionItemData($0) } ?? []
     }
 }
 

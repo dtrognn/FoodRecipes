@@ -45,5 +45,6 @@ public struct GetRecipeInfomationEndpoint: Endpoint {
         public let spoonacularScore: Double
         public let pricePerServing: Double
         public let extendedIngredients: [ExtendedIngredient]?
+        public let analyzedInstructions: [AnalyzedInstruction]?
     }
 }

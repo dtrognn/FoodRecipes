@@ -19,6 +19,7 @@ class RecipeItemViewData: Identifiable {
     var pricePerServing: Double = 0.0
     var dishTypes: [String] = []
     var ingredients: [IngredientItemData] = []
+    var instructions: [InstructionItemData] = []
 
     init() {}
 

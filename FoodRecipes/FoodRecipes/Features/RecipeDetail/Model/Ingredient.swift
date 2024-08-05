@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum ImageSize: String {
+    case small = "100x100"
+    case medium = "250x250"
+    case large = "500x500"
+}
+
 class IngredientItemData: Identifiable {
     var id: Int = 0
     var measures: MeasuresData = .init(us: .init(), metric: .init())
@@ -15,12 +21,6 @@ class IngredientItemData: Identifiable {
     var name: String = ""
 
     init() {}
-
-    enum ImageSize: String {
-        case small = "100x100"
-        case medium = "250x250"
-        case large = "500x500"
-    }
 
     func getImageUrl(_ size: ImageSize = .medium) -> String {
         let baseUrl = DefineConfiguration.imageBaseUrl

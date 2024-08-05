@@ -9,8 +9,8 @@ import Foundation
 
 public struct AnalyzedInstruction: Codable {
     // Define properties as needed
-    let name: String
-    let steps: [Step]?
+    public let name: String
+    public let steps: [Step]?
 
     enum CodingKeys: String, CodingKey {
         case name
