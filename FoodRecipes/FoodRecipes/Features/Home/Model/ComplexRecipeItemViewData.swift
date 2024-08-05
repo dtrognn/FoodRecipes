@@ -34,25 +34,4 @@ struct ComplexRecipeItemViewData: Identifiable, Hashable {
         self.title = title
         self.image = image
     }
-
-//    private var recipe: GetRandomRecipesEndpoint.RandomRecipe
-
-//    init(_ recipe: GetRandomRecipesEndpoint.RandomRecipe) {
-//        self.recipe = recipe
-//    }
-
-//    func getId() -> Int {
-//        return recipe.id ?? 0
-//    }
-//
-//    func getTitle() -> String {
-//        return recipe.title ?? ""
-//    }
-//
-//    func getThumb(_ size: RecipeImageSizeType = .large) -> String {
-//        // https://img.spoonacular.com/recipes/{ID}-{SIZE}.{TYPE}
-//        let baseUrl = DefineConfiguration.imageBaseUrl
-//        let thumbUrl = String(format: "%@/recipes/%d-%@.%@", baseUrl, recipe.id ?? 0, size.rawValue, recipe.imageType ?? "jpg")
-//        return thumbUrl
-//    }
 }

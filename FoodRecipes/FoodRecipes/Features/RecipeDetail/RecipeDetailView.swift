@@ -32,7 +32,11 @@ struct RecipeDetailView: View {
                     recipeNameText
                     summaryView
                     RecipePramView(vm.recipe)
-                    DishesTypeView(vm.recipe)
+
+                    if !vm.recipe.dishTypes.isEmpty {
+                        DishesTypeView(vm.recipe)
+                    }
+
                     IngredientsView(vm.recipe.ingredients)
                     InstructionsView(vm.recipe.instructions)
                 }.padding(.all, AppStyle.layout.standardSpace)

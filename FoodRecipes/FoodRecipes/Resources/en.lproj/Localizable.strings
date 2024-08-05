@@ -8,6 +8,7 @@
 "Home_A_01" = "Categories";
 "Home_A_02" = "Hello, %@!";
 "Home_A_03" = "Today's dish suggestion";
+"Home_A_04" = "List of dishes";
 
 "Food_List_A_01" = "Food list ";
 "Food_List_A_02" = "There are no dishes in list %@ yet";

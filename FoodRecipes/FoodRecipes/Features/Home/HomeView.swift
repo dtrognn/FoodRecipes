@@ -22,9 +22,13 @@ struct HomeView: View {
                 headerView
 
                 FRScrollView {
-                    VStack {
+                    VStack(spacing: AppStyle.layout.standardSpace) {
                         randomRecipesView
+                        complexRecipesView
                     }.padding(.all, AppStyle.layout.standardSpace)
+                        .padding(.bottom, AppStyle.layout.standardButtonHeight * 2)
+                }.refreshable {
+                    vm.loadData()
                 }
             }
         }
@@ -56,7 +60,7 @@ private extension HomeView {
     }
 }
 
-// MARK: - Categories
+// MARK: - Comple recipes
 
 private extension HomeView {
     var columns: [GridItem] {
@@ -66,14 +70,50 @@ private extension HomeView {
         ]
     }
 
-    var randomRecipesView: some View {
-        return LazyVGrid(columns: columns, spacing: AppStyle.layout.standardSpace) {
-            ForEach(vm.recipes) { recipe in
-                ComplexRecipeItemView(recipe: recipe) { recipeSelected in
-                    router.push(to: HomeTabDestination.recipeDetail(recipeSelected.id))
+    var complexRecipesView: some View {
+        return VStack(alignment: .leading, spacing: AppStyle.layout.standardSpace) {
+            listFoodsText
+
+            LazyVGrid(columns: columns, spacing: AppStyle.layout.standardSpace) {
+                ForEach(vm.recipes) { recipe in
+                    ComplexRecipeItemView(recipe: recipe) { recipeSelected in
+                        router.push(to: HomeTabDestination.recipeDetail(recipeSelected.id))
+                    }
                 }
             }
-        }.padding(.bottom, AppStyle.layout.standardButtonHeight * 2)
+        }
+    }
+
+    var listFoodsText: some View {
+        return Text(language("Home_A_04"))
+            .font(AppStyle.font.semibold16)
+            .foregroundStyle(AppStyle.theme.textNormalColor)
+    }
+}
+
+// MARK: - Random recipes
+
+private extension HomeView {
+    var randomRecipesView: some View {
+        return VStack(alignment: .leading, spacing: AppStyle.layout.standardSpace) {
+            listRandomFoodsText
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: AppStyle.layout.standardSpace) {
+                    ForEach(vm.randomRecipes) { recipe in
+                        RandomRecipeItemView(recipe) { recipeSelected in
+                            router.push(to: HomeTabDestination.recipeDetail(recipeSelected.id))
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    var listRandomFoodsText: some View {
+        return Text(language("Home_A_03"))
+            .font(AppStyle.font.semibold16)
+            .foregroundStyle(AppStyle.theme.textNormalColor)
     }
 }
 
