@@ -18,7 +18,7 @@ struct RecipeDetailView: View {
 
     private var screenConfiguration: ScreenConfiguration {
         return .init(
-            title: vm.recipe.title,
+            title: language("Recipe_Detail_A_09"),
             showBackButton: true,
             showNaviBar: true
         )
@@ -29,6 +29,7 @@ struct RecipeDetailView: View {
             FRScrollView {
                 VStack(spacing: AppStyle.layout.standardSpace) {
                     recipeImage
+                    recipeNameText
                     summaryView
                     RecipePramView(vm.recipe)
                     DishesTypeView(vm.recipe)
@@ -41,6 +42,13 @@ struct RecipeDetailView: View {
 }
 
 private extension RecipeDetailView {
+    var recipeNameText: some View {
+        return Text(vm.recipe.title)
+            .font(AppStyle.font.semibold16)
+            .foregroundStyle(AppStyle.theme.textNormalColor)
+            .multilineTextAlignment(.center)
+    }
+
     var recipeImage: some View {
         return ImageUrl(urlString: vm.recipe.image) {
             ProgressView().applyTheme()
@@ -50,11 +58,11 @@ private extension RecipeDetailView {
 
     var summaryView: some View {
         return VStack(spacing: AppStyle.layout.standardSpace) {
-            HStack(spacing: AppStyle.layout.zero) {
-                summaryText
-                Spacer()
-                summarySeeDetailButton
-            }
+//            HStack(spacing: AppStyle.layout.zero) {
+//                summaryText
+//                Spacer()
+//                summarySeeDetailButton
+//            }
             summaryDescriptionText
         }
     }

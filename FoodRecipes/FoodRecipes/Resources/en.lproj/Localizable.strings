@@ -7,14 +7,17 @@
 
 "Home_A_01" = "Categories";
 "Home_A_02" = "Hello, %@!";
+"Home_A_03" = "Today's dish suggestion";
 
 "Food_List_A_01" = "Food list ";
 "Food_List_A_02" = "There are no dishes in list %@ yet";
 
-"Recipe_Detail_A_01" = "Tóm tắt";
-"Recipe_Detail_A_02" = "Xem chi tiết";
+"Recipe_Detail_A_01" = "Summary";
+"Recipe_Detail_A_02" = "See details";
 "Recipe_Detail_A_03" = "Likes";
 "Recipe_Detail_A_04" = "Minutes";
 "Recipe_Detail_A_05" = "Servings";
 "Recipe_Detail_A_06" = "Prices";
 "Recipe_Detail_A_07" = "Ingredients";
+"Recipe_Detail_A_08" = "Items";
+"Recipe_Detail_A_09" = "Recipe Detail";

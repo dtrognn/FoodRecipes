@@ -7,14 +7,17 @@
 
 "Home_A_01" = "Danh mục";
 "Home_A_02" = "Xin chào, %@!";
+"Home_A_03" = "Gợi ý món ăn hôm nay";
 
 "Food_List_A_01" = "Danh sách món ăn ";
 "Food_List_A_02" = "Chưa có món ăn trong danh mục %@";
 
-"Recipe_Detail_A_01" = "Summary";
-"Recipe_Detail_A_02" = "See details";
+"Recipe_Detail_A_01" = "Tóm tắt";
+"Recipe_Detail_A_02" = "Xem chi tiết";
 "Recipe_Detail_A_03" = "Lượt thích";
 "Recipe_Detail_A_04" = "Phút";
 "Recipe_Detail_A_05" = "Khẩu phần";
 "Recipe_Detail_A_06" = "Giá";
 "Recipe_Detail_A_07" = "Nguyên liệu";
+"Recipe_Detail_A_08" = "Thành phần";
+"Recipe_Detail_A_09" = "Công thức chi tiết";

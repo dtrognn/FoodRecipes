@@ -17,7 +17,11 @@ struct IngredientsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppStyle.layout.standardSpace) {
-            ingredientsText
+            HStack(spacing: AppStyle.layout.zero) {
+                ingredientsText
+                Spacer()
+                numberOfIngredientsText
+            }
 
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: AppStyle.layout.mediumSpace) {
@@ -35,5 +39,11 @@ private extension IngredientsView {
         return Text(language("Recipe_Detail_A_07"))
             .font(AppStyle.font.semibold16)
             .foregroundStyle(AppStyle.theme.textNormalColor)
+    }
+
+    var numberOfIngredientsText: some View {
+        return Text(String(format: "%d %@", ingredients.count, language("Recipe_Detail_A_08")))
+            .font(AppStyle.font.regular16)
+            .foregroundStyle(AppStyle.theme.textNoteColor)
     }
 }
