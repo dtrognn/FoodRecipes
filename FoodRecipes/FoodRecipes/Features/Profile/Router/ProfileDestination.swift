@@ -7,4 +7,6 @@
 
 import Foundation
 
-enum ProfileDestination: Hashable {}
+enum ProfileDestination: Hashable {
+    case language
+}

@@ -15,7 +15,7 @@ class HomeViewModel: BaseViewModel {
 
     override init() {
         super.init()
-        mapApiReciplesComplexAndRandom()
+//        mapApiReciplesComplexAndRandom()
     }
 
     func loadData() {

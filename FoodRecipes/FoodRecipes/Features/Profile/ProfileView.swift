@@ -33,7 +33,9 @@ struct ProfileView: View {
 
 private extension ProfileView {
     var settingRowView: some View {
-        return ProfileRowCommomView(image: .image("ic_language"), title: language("Profile_A_01"), showBottomLine: false) {}
+        return ProfileRowCommomView(image: .image("ic_language"), title: language("Profile_A_01"), showBottomLine: false) {
+            router.push(to: ProfileDestination.language)
+        }
     }
 }
 

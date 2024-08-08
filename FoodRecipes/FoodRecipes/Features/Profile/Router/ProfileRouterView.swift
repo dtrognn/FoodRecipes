@@ -14,8 +14,11 @@ struct ProfileRouterView: View {
     var body: some View {
         NavigationStack(path: $router.path) {
             ProfileView()
-                .navigationDestination(for: ProfileDestination.self) { _ in
-                    //
+                .navigationDestination(for: ProfileDestination.self) { destination in
+                    switch destination {
+                    case .language:
+                        ChangeLanguageView()
+                    }
                 }
         }.environmentObject(router)
     }
