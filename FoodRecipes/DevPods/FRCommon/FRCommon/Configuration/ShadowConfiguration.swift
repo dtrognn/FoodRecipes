@@ -16,7 +16,7 @@ public struct ShadowConfiguration {
     public init() {
         shadowRadius = 3.0
         shadowColor = AppStyle.theme.shadowColor
-        shadowX = -2
+        shadowX = 0
         shadowY = 2
     }
 

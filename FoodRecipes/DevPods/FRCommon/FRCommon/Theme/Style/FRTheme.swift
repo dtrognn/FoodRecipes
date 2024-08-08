@@ -94,7 +94,7 @@ struct AppLightTheme: IFRTheme {
     var tfFillNormalColor: Color { return Color(hexString: "#FFFFFF")! }
     var tfFillDisableColor: Color { return Color(hexString: "#011222", opacity: 0.05)! }
 
-    var shadowColor: Color { return Color(hexString: "#000000")!.opacity(0.6) }
+    var shadowColor: Color { return Color(hexString: "#000000")!.opacity(0.3) }
     var lineColor: Color { return Color(hexString: "#E6E6E6")! }
 
     var iconColor: Color { return Color(hexString: "#7F3DFF")! }
@@ -148,7 +148,7 @@ struct AppDarkTheme: IFRTheme {
     var tfFillNormalColor: Color { return Color(hexString: "#264653")! }
     var tfFillDisableColor: Color { return Color(hexString: "#011222", opacity: 0.05)! }
 
-    var shadowColor: Color { return Color(hexString: "#000000")!.opacity(0.6) }
+    var shadowColor: Color { return Color(hexString: "#000000")!.opacity(0.3) }
     var lineColor: Color { return Color(hexString: "#E6E6E6")! }
 
     var iconColor: Color { return Color(hexString: "#7F3DFF")! }

@@ -26,7 +26,9 @@ struct ChangeLanguageView: View {
                     ForEach(vm.languages) { language in
                         LanguageItemView(data: language)
                     }
-                }
+                }.background(AppStyle.theme.rowCommonBackgroundColor)
+                    .cornerRadius(AppStyle.layout.standardSpace)
+                    .applyShadowView()
             }.padding(.all, AppStyle.layout.standardSpace)
         }.environment(\.locale, .init(identifier: LanguageManager.shared.currentLanguage.getLanguageCode()))
     }
