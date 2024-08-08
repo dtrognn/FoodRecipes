@@ -9,6 +9,8 @@ import FRCommon
 import SwiftUI
 
 struct ChangeLanguageView: View {
+    @StateObject private var vm = ChangeLanguageViewModel()
+
     private var screenConfiguration: ScreenConfiguration {
         return .init(
             title: language("Language_A_01"),
@@ -20,9 +22,13 @@ struct ChangeLanguageView: View {
     var body: some View {
         ScreenContainerView(screenConfiguration) {
             VStack {
-                //
+                LazyVStack(spacing: AppStyle.layout.zero) {
+                    ForEach(vm.languages) { language in
+                        LanguageItemView(data: language)
+                    }
+                }
             }.padding(.all, AppStyle.layout.standardSpace)
-        }
+        }.environment(\.locale, .init(identifier: LanguageManager.shared.currentLanguage.getLanguageCode()))
     }
 }
 

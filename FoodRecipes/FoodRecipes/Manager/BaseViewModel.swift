@@ -15,6 +15,19 @@ open class BaseViewModel: ObservableObject {
 
     var isLoading = PassthroughSubject<Bool, Never>()
 
+    init() {
+        initData()
+        makeSubscription()
+    }
+
+    open func initData() {
+
+    }
+
+    open func makeSubscription() {
+
+    }
+
     open func showLoading(_ isLoading: Bool) {
         self.isLoading.send(isLoading)
         if showLoadingDefault() {
