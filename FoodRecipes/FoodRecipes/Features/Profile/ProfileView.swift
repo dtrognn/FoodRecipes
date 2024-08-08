@@ -19,10 +19,21 @@ struct ProfileView: View {
         ScreenContainerView(screenConfiguration) {
             FRScrollView {
                 VStack {
-                    //
-                }
+                    Spacer()
+                    Group {
+                        settingRowView
+                    }.cornerRadius(AppStyle.layout.standardCornerRadius)
+                        .applyShadowView()
+                    Spacer()
+                }.padding(.all, AppStyle.layout.standardSpace)
             }
         }
+    }
+}
+
+private extension ProfileView {
+    var settingRowView: some View {
+        return ProfileRowCommomView(image: .image("ic_language"), title: language("Profile_A_01"), showBottomLine: false) {}
     }
 }
 
