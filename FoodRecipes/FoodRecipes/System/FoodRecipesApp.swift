@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import FRCommon
 
 @main
 struct FoodRecipesApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var languageManager = LanguageManager.shared
 
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .environment(\.locale, .init(identifier: self.languageManager.currentLanguage.getLanguageCode()))
         }
     }
 }

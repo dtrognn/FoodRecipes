@@ -1,0 +1,34 @@
+"Tabbar_A_01" = "Home";
+"Tabbar_A_02" = "Profile";
+
+"Common_A_01" = "Notification";
+
+"Error_A_01" = "An error occurred, please try again!";
+
+"Home_A_01" = "Categories";
+"Home_A_02" = "Hello, %@!";
+"Home_A_03" = "Today's dish suggestion";
+"Home_A_04" = "List of dishes";
+
+"Food_List_A_01" = "Food list ";
+"Food_List_A_02" = "There are no dishes in list %@ yet";
+
+"Recipe_Detail_A_01" = "Summary";
+"Recipe_Detail_A_02" = "See details";
+"Recipe_Detail_A_03" = "Likes";
+"Recipe_Detail_A_04" = "Minutes";
+"Recipe_Detail_A_05" = "Servings";
+"Recipe_Detail_A_06" = "Prices";
+"Recipe_Detail_A_07" = "Ingredients";
+"Recipe_Detail_A_08" = "Items";
+"Recipe_Detail_A_09" = "Recipe Detail";
+"Recipe_Detail_A_10" = "Instructions";
+"Recipe_Detail_A_11" = "Step";
+"Recipe_Detail_A_12" = "Equipment";
+
+"Profile_A_01" = "Language";
+
+"Language_A_01" = "Language";
+"Language_A_02" = "Vietnamese";
+"Language_A_03" = "English";
+"Language_A_04" = "Default";
