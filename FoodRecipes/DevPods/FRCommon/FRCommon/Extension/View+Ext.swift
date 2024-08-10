@@ -45,11 +45,14 @@ public extension View {
 //    }
 
     func applyShadowView(_ colorFill: Color = AppStyle.theme.shadowColor, cornerRadius: CGFloat = AppStyle.layout.standardCornerRadius) -> some View {
-
         return modifier(ShadowModifier(colorFill: colorFill, cornerRadius: cornerRadius, shadowConfiguration: ShadowConfiguration()))
     }
 
     var asAnyView: AnyView {
         return AnyView(self)
+    }
+
+    func hidden(_ isHidden: Bool) -> some View {
+        modifier(HiddenModifier(isHidden: isHidden))
     }
 }

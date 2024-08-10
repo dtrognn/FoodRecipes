@@ -8,20 +8,28 @@
 import Foundation
 import FRCommon
 import FRCore
+import Combine
 
 final class AppConfigurationManager {
     static let shared = AppConfigurationManager()
+
+    private var cancellableSet: Set<AnyCancellable> = []
 
     private init() {}
 
     func loadCommonConfig() {
         loadModuleConfig()
+        AppDataManager.shared.appLanguage.loadLanguage()
 
         configureLoading()
         configureAlertMessage()
+
+        LanguageManager.shared.onChangeLanguage.sink { _ in
+
+        }.store(in: &cancellableSet)
     }
 
-    func loadModuleConfig() {
+    private func loadModuleConfig() {
         FRCommonConfig.shared.loadConfig()
         APIConfig.shared.configure(baseUrl: URLEnvironment(url: DefineConfiguration.baseUrl, apiKey: DefineConfiguration.apiKey))
     }

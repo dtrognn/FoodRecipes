@@ -8,6 +8,10 @@
 import FRCommon
 import SwiftUI
 
+enum HomeTabDestination: Hashable {
+    case recipeDetail(Int)
+}
+
 struct HomeRouterView: View {
     @StateObject private var router = Router()
 
