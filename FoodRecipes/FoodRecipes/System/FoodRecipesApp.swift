@@ -15,7 +15,7 @@ struct FoodRecipesApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SplashScreenView()
+            MainTabView()
                 .environment(\.locale, .init(identifier: self.languageManager.currentLanguage.getLanguageCode()))
         }
     }
