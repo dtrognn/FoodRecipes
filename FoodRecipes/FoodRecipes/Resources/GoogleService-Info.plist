@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyA8LBkhIwtIQo8_PwxR4LUANTNYnEdVhmg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>660291822718</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.dtrognn.FoodRecipes</string>
+	<key>PROJECT_ID</key>
+	<string>foodrecipes-35682</string>
+	<key>STORAGE_BUCKET</key>
+	<string>foodrecipes-35682.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:660291822718:ios:835b1ecb0ec36cf9a1e42f</string>
+</dict>
+</plist>
