@@ -23,6 +23,9 @@ struct MainTabView: View {
                     TabItem(tabType: .profile)
                 }.tag(TabbarRouter.TabType.profile)
         }.tint(AppStyle.theme.iconColor)
+            .onAppear {
+                UITabBar.appearance().backgroundColor = AppStyle.theme.tabbarBackgroundViewColor.asUIColor()
+            }
     }
 }
 
