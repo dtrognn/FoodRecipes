@@ -8,17 +8,27 @@
 import FRCommon
 import SwiftUI
 
+class ProfileRouter: BaseRouter<ProfileRouter.Screen> {
+    enum Screen: IScreen {
+        case language
+    }
+
+    override func getInstanceScreen(_ screen: Screen) -> AnyView {
+        switch screen {
+        case .language:
+            return ChangeLanguageView().environmentObject(self).asAnyView
+        }
+    }
+}
+
 struct ProfileRouterView: View {
-    @StateObject private var router = Router()
+    @StateObject private var router = ProfileRouter()
 
     var body: some View {
-        NavigationStack(path: $router.path) {
+        NavigationStack(path: $router.navigationPath) {
             ProfileView()
-                .navigationDestination(for: ProfileDestination.self) { destination in
-                    switch destination {
-                    case .language:
-                        ChangeLanguageView()
-                    }
+                .navigationDestination(for: ProfileRouter.Screen.self) { destination in
+                    router.getInstanceScreen(destination)
                 }
         }.environmentObject(router)
     }

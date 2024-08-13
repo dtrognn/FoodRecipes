@@ -9,7 +9,7 @@ import FRCommon
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var router: HomeRouter
     @StateObject private var vm = HomeViewModel()
 
     private var screenConfiguration: ScreenConfiguration {
@@ -77,7 +77,7 @@ private extension HomeView {
             LazyVGrid(columns: columns, spacing: AppStyle.layout.standardSpace) {
                 ForEach(vm.recipes) { recipe in
                     ComplexRecipeItemView(recipe: recipe) { recipeSelected in
-                        router.push(to: HomeTabDestination.recipeDetail(recipeSelected.id))
+                        router.push(to: .recipeDetail(recipeSelected.id))
                     }
                 }
             }
@@ -102,7 +102,7 @@ private extension HomeView {
                 LazyHStack(spacing: AppStyle.layout.standardSpace) {
                     ForEach(vm.randomRecipes) { recipe in
                         RandomRecipeItemView(recipe) { recipeSelected in
-                            router.push(to: HomeTabDestination.recipeDetail(recipeSelected.id))
+                            router.push(to: .recipeDetail(recipeSelected.id))
                         }
                     }
                 }

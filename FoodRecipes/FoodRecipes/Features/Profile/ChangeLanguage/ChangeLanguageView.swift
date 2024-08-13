@@ -9,14 +9,17 @@ import FRCommon
 import SwiftUI
 
 struct ChangeLanguageView: View {
+    @EnvironmentObject private var router: ProfileRouter
     @StateObject private var vm = ChangeLanguageViewModel()
 
     private var screenConfiguration: ScreenConfiguration {
         return .init(
             title: language("Language_A_01"),
             showBackButton: true,
-            showNaviBar: true
-        )
+            showNaviBar: true)
+        {
+            router.popView()
+        }
     }
 
     var body: some View {

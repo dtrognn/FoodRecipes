@@ -2,7 +2,7 @@
 //  BaseRouter.swift
 //  FRCommon
 //
-//  Created by dtrognn on 10/8/24.
+//  Created by dtrognn on 12/8/24.
 //
 
 import Combine
@@ -11,24 +11,23 @@ import SwiftUI
 public protocol IScreen: Hashable {}
 
 open class BaseRouter<Screen: IScreen>: ObservableObject {
-    public var cancellableSet: Set<AnyCancellable> = []
     @Published public var navigationPath: NavigationPath
+    public var cancellableSet: Set<AnyCancellable> = []
 
     public init() {
         self.navigationPath = NavigationPath()
-        makeSubcription()
     }
 
     public init(navigationPath: NavigationPath) {
         self.navigationPath = navigationPath
     }
 
-    open func makeSubcription() {
+    open func makeSubscription() {
 
     }
 
     open func getInstanceScreen(_ screen: Screen) -> AnyView {
-        fatalError("Need to implement func getInstanceScreen")
+        fatalError("Need to implement func getInstanceScreen()")
     }
 
     public func push(to screen: Screen) {
@@ -40,6 +39,6 @@ open class BaseRouter<Screen: IScreen>: ObservableObject {
     }
 
     public func popToRootView() {
-        navigationPath = NavigationPath()
+        navigationPath.removeLast(navigationPath.count)
     }
 }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 public struct ScreenContainerView<Content: View>: View {
-    @EnvironmentObject private var router: Router
     @ObservedObject public var screenConfiguration: ScreenConfiguration
     public var content: () -> Content
 

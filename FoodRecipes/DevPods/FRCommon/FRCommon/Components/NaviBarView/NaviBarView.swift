@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NaviBarView: View {
-    @EnvironmentObject private var router: Router
     @ObservedObject private var screenConfiguration: ScreenConfiguration
 
     init(screenConfiguration: ScreenConfiguration) {
@@ -44,8 +43,6 @@ private extension NaviBarView {
         return Button {
             if screenConfiguration.onBackAction != nil {
                 screenConfiguration.onBackAction?()
-            } else {
-                self.router.popView()
             }
         } label: {
             Image.image("ic_arrow_back")

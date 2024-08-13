@@ -9,20 +9,26 @@ import FRCommon
 import SwiftUI
 
 struct SplashScreenView: View {
-    private var screenConfiguration: ScreenConfiguration {
-        .init(title: "", showBackButton: false, hidesBottomBarWhenPushed: false, showNaviBar: false)
-    }
+    @EnvironmentObject private var appRouter: AppRouter
 
     var body: some View {
-        ScreenContainerView(screenConfiguration) {
+        ZStack {
+            AppStyle.theme.splashBackgroundColor
+
             VStack {
                 Spacer()
                 Image.image("ic_app_no_bg")
                     .resizable()
                     .frame(width: 300, height: 276)
+
                 Spacer()
             }
-        }
+        }.ignoresSafeArea()
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    appRouter.updateScreen(isLoggedIn: AppDataManager.shared.isLogout)
+                }
+            }
     }
 }
 

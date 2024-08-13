@@ -9,7 +9,7 @@ import FRCommon
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var router: ProfileRouter
 
     private var screenConfiguration: ScreenConfiguration {
         .init(title: "", showBackButton: false, hidesBottomBarWhenPushed: false, showNaviBar: false)
@@ -34,7 +34,7 @@ struct ProfileView: View {
 private extension ProfileView {
     var settingRowView: some View {
         return ProfileRowCommomView(image: .image("ic_language"), title: language("Profile_A_01"), showBottomLine: false) {
-            router.push(to: ProfileDestination.language)
+            router.push(to: .language)
         }
     }
 }
