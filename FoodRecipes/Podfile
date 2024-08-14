@@ -5,6 +5,12 @@ target 'FoodRecipes' do
 
   # Pods for FoodRecipes
 
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'FirebaseFirestore'
+  pod 'FirebaseDatabase'
+  pod 'FirebaseStorage'
+
   pod 'SVProgressHUD'
   pod 'NotificationBannerSwift'
 

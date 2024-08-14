@@ -9,7 +9,7 @@ import FRCommon
 import SwiftUI
 
 struct RecipeDetailView: View {
-    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var router: HomeRouter
     @StateObject private var vm: RecipeDetailViewModel
 
     init(_ recipeId: Int) {
@@ -20,8 +20,9 @@ struct RecipeDetailView: View {
         return .init(
             title: language("Recipe_Detail_A_09"),
             showBackButton: true,
-            showNaviBar: true
-        )
+            showNaviBar: true) {
+                router.popView()
+            }
     }
 
     var body: some View {

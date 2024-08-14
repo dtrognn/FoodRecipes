@@ -51,4 +51,8 @@ public extension Color {
             blue: .random(in: 0...1)
         )
     }
+
+    func asUIColor() -> UIColor {
+        return UIColor(self)
+    }
 }

@@ -8,23 +8,27 @@
 import FRCommon
 import SwiftUI
 
-enum HomeTabDestination: Hashable {
-    case recipeDetail(Int)
+class HomeRouter: BaseRouter<HomeRouter.Screen> {
+    enum Screen: IScreen {
+        case recipeDetail(Int)
+    }
+
+    override func getInstanceScreen(_ screen: Screen) -> AnyView {
+        switch screen {
+        case .recipeDetail(let id):
+            return RecipeDetailView(id).environmentObject(self).asAnyView
+        }
+    }
 }
 
 struct HomeRouterView: View {
-    @StateObject private var router = Router()
+    @StateObject private var router = HomeRouter()
 
     var body: some View {
-        NavigationStack(path: $router.path) {
+        NavigationStack(path: $router.navigationPath) {
             HomeView()
-                .navigationDestination(for: HomeTabDestination.self) { destination in
-                    switch destination {
-                    case .recipeDetail(let id):
-                        RecipeDetailView(id)
-                    default:
-                        EmptyView()
-                    }
+                .navigationDestination(for: HomeRouter.Screen.self) { destination in
+                    router.getInstanceScreen(destination)
                 }
         }.environmentObject(router)
     }

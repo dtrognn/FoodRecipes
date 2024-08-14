@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-public final class Router: ObservableObject {
-    @Published public var path = NavigationPath()
-
-    public init() {}
-
-    public func push(to destination: any Hashable) {
-        path.append(destination)
-    }
-
-    public func popView() {
-        path.removeLast()
-    }
-
-    public func popToRootView() {
-        path = NavigationPath()
-    }
-}
+//public final class Router: ObservableObject {
+//    @Published public var path = NavigationPath()
+//
+//    public init() {}
+//
+//    public func push(to destination: any Hashable) {
+//        path.append(destination)
+//    }
+//
+//    public func popView() {
+//        path.removeLast()
+//    }
+//
+//    public func popToRootView() {
+//        path = NavigationPath()
+//    }
+//}

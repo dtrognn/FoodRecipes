@@ -18,6 +18,7 @@ public struct AppStyle {
     public static var isDarkMode: Bool = false {
         didSet {
             theme = isDarkMode ? darkTheme : lightTheme
+            UITabBar.appearance().backgroundColor = theme.tabbarBackgroundViewColor.asUIColor()
         }
     }
 
